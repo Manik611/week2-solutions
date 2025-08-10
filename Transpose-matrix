@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+#define MAX 100
+
+void transpose(int mat[MAX][MAX], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            int temp = mat[i][j];
+            mat[i][j] = mat[j][i];
+            mat[j][i] = temp;
+        }
+    }
+}
+
+int main() {
+    int n;
+    int mat[MAX][MAX];
+
+    printf("Enter size of square matrix: ");
+    scanf("%d", &n);
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    transpose(mat, n);
+
+    printf("Transpose of matrix:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
