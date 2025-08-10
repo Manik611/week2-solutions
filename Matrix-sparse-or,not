@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define MAX 100
+
+int main() {
+    int n, m;
+    int mat[MAX][MAX];
+    int zeroCount = 0;
+
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &n, &m);
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &mat[i][j]);
+            if (mat[i][j] == 0) {
+                zeroCount++;
+            }
+        }
+    }
+
+    int totalElements = n * m;
+
+    if (zeroCount > totalElements / 2)
+        printf("Yes\n");
+    else
+        printf("No\n");
+
+    return 0;
+}
