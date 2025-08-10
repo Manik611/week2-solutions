@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+#define MAX 100
+
+void rotate90AntiClockwise(int mat[MAX][MAX], int n) {
+   
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            int temp = mat[i][j];
+            mat[i][j] = mat[j][i];
+            mat[j][i] = temp;
+        }
+    }
+
+    for (int col = 0; col < n; col++) {
+        int top = 0, bottom = n - 1;
+        while (top < bottom) {
+            int temp = mat[top][col];
+            mat[top][col] = mat[bottom][col];
+            mat[bottom][col] = temp;
+            top++;
+            bottom--;
+        }
+    }
+}
+
+int main() {
+    int n;
+    int mat[MAX][MAX];
+
+    printf("Enter size of square matrix: ");
+    scanf("%d", &n);
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    rotate90AntiClockwise(mat, n);
+
+    printf("Matrix after 90 degree anti-clockwise rotation:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
